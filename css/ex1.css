@@ -1,6 +1,10 @@
 body{
     background: #000;
+    font-family: Helvetica, sans-serif;
+	font-size: 100%;
+	color: #333;
 }
+
 .white{
     color:#fff;
 }
@@ -25,7 +29,7 @@ header{
 #menu ul{
     list-style: none;
     padding: 0px;
-    margin-left: 100px;
+    margin-left: 125px;
 }
 #menu ul li{
     display: inline;
@@ -34,11 +38,47 @@ header{
 #menu ul li a{
     color: #fff;
     text-decoration: none;
-    padding-top: 0px;
+    padding-top: 3px;
     height: 30px;
     width: 80px;
     float: left;
     display: block;
     text-align: center;
 }
+#menu a:hover{
+    color: #f00;
+    background: linear-gradient(#000, #666)
+}
     
+#content{
+    width: 680px;
+    font-family: Baskerville, "Goudy Old Style", "Palatino", "Book Antiqua", serif;
+	font-weight: normal;
+}
+
+#left{
+    float: left;
+    width: 200px;
+    padding-left: 10px;
+}
+
+#left h2{
+    color: #fff;
+    border: 2px solid black;
+    border-radius: 5px;
+    background: linear-gradient(#ddd, #888, #333, #000);
+}
+
+#right{
+    float: right;
+    width: 450px;
+}
+
+footer{
+    clear: both;
+    width: 680px;
+    background: linear-gradient(#666, #000);
+    color:#fff;
+    text-align: center;
+    padding-top: 2px;
+}
