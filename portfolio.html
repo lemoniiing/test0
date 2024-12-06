@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+        .carousel {
+            position: relative;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 600px;
+        }
+        .carousel img {
+            width: 100%;
+            display: none;
+        }
+        .carousel img.active {
+            display: block;
+        }
+        .carousel button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .carousel button:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        .prev {
+            left: 10px;
+        }
+        .next {
+            right: 10px;
+        }
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+        .art-piece {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Portfolio</h1>
+    </header>
+
+    <section class="carousel">
+        <button class="prev">&#10094;</button>
+        <img src="art1.jpg" alt="Artwork 1" class="active">
+        <img src="art2.jpg" alt="Artwork 2">
+        <img src="art3.jpg" alt="Artwork 3">
+        <button class="next">&#10095;</button>
+    </section>
+
+    <section class="content">
+        <h2>About My Artwork</h2>
+        <p>I created these pieces during college. Each one reflects my skills and creativity as I grew as an artist.</p>
+
+        <div class="art-piece">
+            <h3>Art Piece 1</h3>
+            <p>Description of the first art piece.</p>
+        </div>
+        <div class="art-piece">
+            <h3>Art Piece 2</h3>
+            <p>Description of the second art piece.</p>
+        </div>
+        <div class="art-piece">
+            <h3>Art Piece 3</h3>
+            <p>Description of the third art piece.</p>
+        </div>
+    </section>
+
+    <script>
+        const images = document.querySelectorAll('.carousel img');
+        let currentIndex = 0;
+
+        document.querySelector('.next').addEventListener('click', () => {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+        });
+
+        document.querySelector('.prev').addEventListener('click', () => {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            images[currentIndex].classList.add('active');
+        });
+    </script>
+</body>
+</html>
