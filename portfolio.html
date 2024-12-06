@@ -3,33 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Lemon's Portfolio</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Times New Roman', Times, serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
-        }
-        header {
-            background: #333;
-            color: #fff;
-            padding: 1rem;
+            background-color: #e8efff;
             text-align: center;
         }
+
+        header {
+            background: #343d4f;
+            color: #fff;
+            padding: 1rem;
+        }
+
         .carousel {
             position: relative;
-            margin: 20px auto;
+            overflow: hidden;
             width: 80%;
             max-width: 600px;
+            margin: 20px auto;
         }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
         .carousel img {
             width: 100%;
-            display: none;
-        }
-        .carousel img.active {
-            display: block;
-        }
+            flex-shrink: 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+            cursor: pointer; /* Make the image appear clickable */
+}
+
+        .carousel img:hover {
+            transform: scale(1.05);  /* Slight zoom effect */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);  /* Shadow to indicate interaction */
+}
+
         .carousel button {
             position: absolute;
             top: 50%;
@@ -39,70 +53,89 @@
             border: none;
             padding: 10px;
             cursor: pointer;
+            z-index: 10;
         }
+
         .carousel button:hover {
             background-color: rgba(0, 0, 0, 0.7);
         }
+
         .prev {
             left: 10px;
         }
+
         .next {
             right: 10px;
         }
+
         .content {
             padding: 20px;
-            text-align: center;
         }
+
         .art-piece {
             margin: 20px 0;
+        }
+
+        .art-piece h3 {
+            margin-top: 70px;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Welcome to My Portfolio</h1>
+        <h1>Welcome to Lemon's Portfolio</h1>
     </header>
-
-    <section class="carousel">
-        <button class="prev">&#10094;</button>
-        <img src="art1.jpg" alt="Artwork 1" class="active">
-        <img src="art2.jpg" alt="Artwork 2">
-        <img src="art3.jpg" alt="Artwork 3">
-        <button class="next">&#10095;</button>
-    </section>
 
     <section class="content">
         <h2>About My Artwork</h2>
         <p>I created these pieces during college. Each one reflects my skills and creativity as I grew as an artist.</p>
 
+        <div class="carousel">
+            <button class="prev">&#10094;</button>
+            <div class="carousel-track">
+                <img src="images/1-1-1.jpg" alt="Artwork 1">
+                <img src="images/1-1-2.jpg" alt="Artwork 2">
+                
+            </div>
+            <button class="next">&#10095;</button>
+        </div>
+
         <div class="art-piece">
             <h3>Art Piece 1</h3>
             <p>Description of the first art piece.</p>
+            <img src="images/1-1-1.jpg" alt="Artwork 1" style="width: 600px;">
         </div>
         <div class="art-piece">
             <h3>Art Piece 2</h3>
             <p>Description of the second art piece.</p>
+            <img src="images/1-1-2.jpg" alt="Artwork 2" style="width: 600px;">
         </div>
         <div class="art-piece">
             <h3>Art Piece 3</h3>
             <p>Description of the third art piece.</p>
+            <img src="images/1-1-3.jpg" alt="Artwork 3" style="width: 600px;">
         </div>
     </section>
 
     <script>
+        const track = document.querySelector('.carousel-track');
         const images = document.querySelectorAll('.carousel img');
+        const prevButton = document.querySelector('.prev');
+        const nextButton = document.querySelector('.next');
         let currentIndex = 0;
 
-        document.querySelector('.next').addEventListener('click', () => {
-            images[currentIndex].classList.remove('active');
+        function updateSlide() {
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        nextButton.addEventListener('click', () => {
             currentIndex = (currentIndex + 1) % images.length;
-            images[currentIndex].classList.add('active');
+            updateSlide();
         });
 
-        document.querySelector('.prev').addEventListener('click', () => {
-            images[currentIndex].classList.remove('active');
+        prevButton.addEventListener('click', () => {
             currentIndex = (currentIndex - 1 + images.length) % images.length;
-            images[currentIndex].classList.add('active');
+            updateSlide();
         });
     </script>
 </body>
